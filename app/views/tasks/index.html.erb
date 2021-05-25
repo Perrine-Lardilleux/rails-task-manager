@@ -1,0 +1,23 @@
+<div class="container ml-3">
+  <h1>Tasks</h1>
+  <% @tasks.each do |task| %>
+    <li>
+      <% if task.completed %>
+        <i class="fa fa-check-square-o"></i>
+      <% else %>
+        <i class="fa fa-square-o"></i>
+      <% end %>
+
+      <%= link_to task.title, task_path(task) %>
+
+      <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?" } do%>
+        <i class="fa fa-trash-o"></i>
+      <% end %>
+    </li>
+  <% end %>
+  <div id=back-to-list>
+    <br>
+    <%= link_to " + New Task", tasks_new_path %>
+  </div>
+</div>
+
